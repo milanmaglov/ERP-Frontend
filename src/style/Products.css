@@ -1,0 +1,57 @@
+/* Products.css */
+
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    color: #333;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* InstrumentsList styles */
+.instruments-list {
+    max-width: 800px;
+    margin: 20px auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.instruments-list ul {
+    list-style: none;
+    padding: 0;
+}
+
+.instruments-list li {
+    background: #f9f9f9;
+    margin-bottom: 10px;
+    padding: 15px;
+    border-radius: 5px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.instruments-list li:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.instruments-list h2 {
+    margin: 0 0 10px;
+    color: #333;
+}
+
+.instruments-list p {
+    margin: 5px 0;
+    color: #555;
+}
+
+.instruments-list p strong {
+    color: #333;
+}

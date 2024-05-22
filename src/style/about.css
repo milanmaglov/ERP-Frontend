@@ -1,0 +1,57 @@
+/* about.css */
+
+/* Center the About section */
+.about {
+  text-align: center;
+  margin: auto;
+  width: 60%;
+  padding: 50px;
+  position: absolute;
+  top: 10%; /* Adjust top position to move it higher */
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.about h2 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.about p {
+  font-size: 18px;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+/* Contact section */
+.Contact {
+  position: absolute;
+  bottom: 10px; /* Adjust bottom position to move it lower */
+  right: 5%;
+  text-align: right;
+  top: 90%;
+}
+
+.Contact h3 {
+  font-size: 20px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.Contact p {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.Contact ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.Contact li {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 5px;
+}

@@ -1,0 +1,156 @@
+/* home.css */
+
+/* Resetting default browser styles */
+body, h1, h2, p {
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Center the content horizontally and vertically */
+  .main-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center items horizontally */
+    justify-content: space-between; /* Distribute space between items */
+    height: 100vh;
+    padding: 20px; /* Add padding to provide some space */
+  }
+  
+  /* Hero section */
+  .hero-section {
+    text-align: center;
+    padding: 50px;
+  }
+  
+  .hero-content {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .hero-content h1 {
+    font-size: 36px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .hero-content p {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 30px;
+  }
+  
+  .cta-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .cta-button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Center section */
+  .center-section {
+    text-align: center;
+    padding: 50px;
+    align-self: flex-start; /* Position on the left */
+  }
+  
+  .center-content {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .center-content h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .center-content p {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 30px;
+  }
+  
+  /* About section */
+  .about-section {
+    text-align: center;
+    padding: 50px;
+    align-self: flex-end; /* Position on the right */
+  }
+  
+  .about-content {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .about-content h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .about-content p {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 30px;
+  }
+  
+  /* Login section */
+  .login-section {
+    text-align: center;
+    padding: 50px;
+    align-self: flex-end; /* Position on the right */
+  }
+  
+  .login-content {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .login-content h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .login-content p {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 30px;
+  }
+  
+  /* Footer */
+  .footer {
+    text-align: center;
+    color: #fff;
+    padding: 20px;
+    width: 100%;
+  }
+  /* Other styles remain unchanged */
+
+.mrki-section {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.big-button {
+  display: inline-block;
+  padding: 20px 40px;
+  font-size: 24px;
+  background-color: #060f18;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.big-button:hover {
+  background-color: #0056b3;
+}
