@@ -1,0 +1,21 @@
+.admin-sidebar {
+    height: 100vh;
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-top: 20px;
+    z-index: 1000;
+  }
+  
+  .admin-sidebar .nav-link {
+    color: #333;
+    padding: 10px 15px;
+    text-decoration: none;
+  }
+  
+  .admin-sidebar .nav-link:hover {
+    background-color: #ddd;
+    color: #000;
+  }
+  

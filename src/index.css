@@ -5,7 +5,7 @@ html, body, h1, h2, h3, p, ul, ol, li {
 }
 
 body {
-  background: linear-gradient(to right, #94b1bd, #5effc1); /* Gradient from left to right */
+  background: linear-gradient(to right, #94b1bd, #5effc1);
   font-family: Arial, sans-serif;
   font-size: 16px;
   line-height: 1.6;

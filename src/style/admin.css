@@ -1,0 +1,13 @@
+/* src/style/admin.css */
+.admin-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #e67308; /* Solid background color */
+}
+
+.admin-container h1 {
+  font-size: 2em;
+  color: #fff; /* Ensure the text color is white */
+}

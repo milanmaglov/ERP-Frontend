@@ -1,9 +1,7 @@
-// src/pages/Auth/Login.jsx
-
 import React, { Component } from 'react';
 import '../style/login.css';
 import { Variables } from '../../Variables';
-import { Navigate } from 'react-router-dom';
+import { Navigate, Link } from 'react-router-dom';
 import { getUserRole } from '../auth/auth';
 
 export class Login extends Component {
@@ -58,7 +56,7 @@ export class Login extends Component {
   render() {
     const { username, password, error, redirectToHome, redirectToAdmin } = this.state;
 
-    if (redirectToHome == true) {
+    if (redirectToHome) {
       return <Navigate to="/" />;
     }
 
@@ -94,6 +92,9 @@ export class Login extends Component {
             </div>
             <button type="submit" className="login-button">Login</button>
           </form>
+          <p className="register-link">
+            Don't have an account? <Link to="/register">Register here</Link>
+          </p>
         </div>
       </div>
     );
