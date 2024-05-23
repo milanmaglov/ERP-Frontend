@@ -1,8 +1,10 @@
-// eslint-disable-next-line no-unused-vars
+// src/pages/Auth/Login.jsx
+
 import React, { Component } from 'react';
 import '../style/login.css';
 import { Variables } from '../../Variables';
 import { Navigate } from 'react-router-dom';
+import { getUserRole } from '../auth/auth';
 
 export class Login extends Component {
   constructor(props) {
@@ -11,7 +13,8 @@ export class Login extends Component {
       username: '',
       password: '',
       error: '',
-      redirectToHome: false
+      redirectToHome: false,
+      redirectToAdmin: false,
     };
   }
 
@@ -37,19 +40,30 @@ export class Login extends Component {
     const data = await response.json();
     
     if (response.ok) {
-      // Store token and redirect to home
       localStorage.setItem('token', data.token);
-      this.setState({ redirectToHome: true });
+      const userRole = getUserRole(data.token);
+      console.log('User role:', userRole); // Debugging line
+
+      if (userRole === 'admin') {
+        this.setState({ redirectToAdmin: true });
+        console.log('Redirecting to admin page'); // Debugging line
+      } else {
+        this.setState({ redirectToHome: true });
+      }
     } else {
       this.setState({ error: data.message || 'Invalid username or password' });
     }
   };
 
   render() {
-    const { username, password, error, redirectToHome } = this.state;
+    const { username, password, error, redirectToHome, redirectToAdmin } = this.state;
 
-    if (redirectToHome) {
+    if (redirectToHome == true) {
       return <Navigate to="/" />;
+    }
+
+    if (redirectToAdmin) {
+      return <Navigate to="/admin" />;
     }
 
     return (
@@ -85,3 +99,5 @@ export class Login extends Component {
     );
   }
 }
+
+export default Login;
