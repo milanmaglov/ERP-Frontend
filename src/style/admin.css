@@ -1,13 +1,54 @@
-/* src/style/admin.css */
+/* admin.css */
+
 .admin-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: #e67308; /* Solid background color */
+  margin-top: 20px;
 }
 
-.admin-container h1 {
-  font-size: 2em;
-  color: #fff; /* Ensure the text color is white */
+
+.my-4 {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+
+button.customButton {
+  width: 100%;
+}
+
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table th, table td {
+  padding: 12px;
+  border: 1px solid #ddd;
+}
+
+table th {
+  background-color: #f4f4f4;
+  text-align: left;
+}
+
+table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+
+.modal-header {
+  background-color: #f4f4f4;
+}
+
+.modal-body {
+  padding: 20px;
+}
+
+.modal-footer {
+  background-color: #f4f4f4;
+}
+
+
+form .form-group {
+  margin-bottom: 20px;
 }

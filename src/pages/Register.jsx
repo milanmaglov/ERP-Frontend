@@ -29,8 +29,8 @@ export class Register extends Component {
 
     const { korisnickoIme, Lozinka_hash, email, broj, datum_prijave, adresa } = this.state;
 
-    const Lozinka_salt = 'salt'; // hardcoded salt value
-    const uloga = 'kupac'; // hardcoded role value
+    const Lozinka_salt = 'salt'; 
+    const uloga = 'kupac'; 
 
     const response = await fetch(Variables.API_URL + 'korisnici', {
       method: 'POST',

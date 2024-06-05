@@ -8,7 +8,7 @@ import '../style/navbar.css';
 export class NavBar extends Component {
   handleLogout = () => {
     localStorage.removeItem('token');
-   // this.props.history.push('/login');
+     this.props.history.push('/login');
     window.location.reload();
   };
 

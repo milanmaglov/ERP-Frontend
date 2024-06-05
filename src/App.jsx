@@ -5,11 +5,11 @@ import { Home } from './pages/Home';
 import { About } from './pages/About';
 import { Products } from './pages/Products';
 import { Login } from './pages/Auth';
-import { AdminPage } from './pages/AdminPage';
+import  AdminPage  from './pages/AdminPage';
 import { ProtectedRoute } from './assets/protectedroute';
 import { Register } from './pages/Register';
 import { AdminNavBar } from './assets/adminnavbar';
-import {  Users } from './pages/Korisnici';
+import  Users  from './pages/Korisnici';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function AppContent() {
@@ -28,7 +28,7 @@ function AppContent() {
           <Route path="/register" element={<Register />} />
           <Route element={<ProtectedRoute roles={['admin']} />}>
             <Route path="/admin" element={<AdminPage />} />
-            <Route path="/admin/dashboard" element={<div>Dashboard</div>} />
+            <Route path="/admin/dashboard" element={<AdminPage />} />
             <Route path="/admin/users" element={<Users/> }/>
             <Route path="/admin/settings" element={<div>Settings</div>} />
           </Route>

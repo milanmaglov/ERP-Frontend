@@ -11,7 +11,7 @@ const InstrumentsList = () => {
     useEffect(() => {
         const fetchInstruments = async () => {
             try {
-                const response = await fetch(Variables.API_URL + 'instrumenti'); // Use the correct API endpoint
+                const response = await fetch(Variables.API_URL + 'instrumenti'); 
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }

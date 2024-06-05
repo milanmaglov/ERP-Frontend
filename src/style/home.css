@@ -1,22 +1,21 @@
 /* home.css */
 
-/* Resetting default browser styles */
+
 body, h1, h2, p {
     margin: 0;
     padding: 0;
   }
-  
-  /* Center the content horizontally and vertically */
+
   .main-page {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center items horizontally */
-    justify-content: space-between; /* Distribute space between items */
+    align-items: center; 
+    justify-content: space-between; 
     height: 100vh;
-    padding: 20px; /* Add padding to provide some space */
+    padding: 20px; 
   }
   
-  /* Hero section */
+
   .hero-section {
     text-align: center;
     padding: 50px;
@@ -53,11 +52,11 @@ body, h1, h2, p {
     background-color: #0056b3;
   }
   
-  /* Center section */
+  
   .center-section {
     text-align: center;
     padding: 50px;
-    align-self: flex-start; /* Position on the left */
+    align-self: flex-start; 
   }
   
   .center-content {
@@ -77,11 +76,11 @@ body, h1, h2, p {
     margin-bottom: 30px;
   }
   
-  /* About section */
+  
   .about-section {
     text-align: center;
     padding: 50px;
-    align-self: flex-end; /* Position on the right */
+    align-self: flex-end; 
   }
   
   .about-content {
@@ -101,11 +100,11 @@ body, h1, h2, p {
     margin-bottom: 30px;
   }
   
-  /* Login section */
+
   .login-section {
     text-align: center;
     padding: 50px;
-    align-self: flex-end; /* Position on the right */
+    align-self: flex-end; 
   }
   
   .login-content {
@@ -125,14 +124,14 @@ body, h1, h2, p {
     margin-bottom: 30px;
   }
   
-  /* Footer */
+  
   .footer {
     text-align: center;
     color: #fff;
     padding: 20px;
     width: 100%;
   }
-  /* Other styles remain unchanged */
+
 
 .mrki-section {
   text-align: center;

@@ -1,21 +1,16 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Table, Container, Button, Form } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Variables } from '../../Variables';
 
-export class Users extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      users: [],
-      loading: true,
-      error: null,
-      editUserId: null,
-      editedUser: {}
-    };
-  }
+const Users = () => {
+  const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [editUserId, setEditUserId] = useState(null);
+  const [editedUser, setEditedUser] = useState({});
 
-  componentDidMount() {
+  useEffect(() => {
     const token = localStorage.getItem('token');
 
     fetch(Variables.API_URL + 'korisnici', {
@@ -26,26 +21,30 @@ export class Users extends Component {
       }
     })
       .then(response => response.json())
-      .then(data => this.setState({ users: data, loading: false }))
-      .catch(error => this.setState({ error, loading: false }));
+      .then(data => {
+        setUsers(data);
+        setLoading(false);
+      })
+      .catch(error => {
+        setError(error);
+        setLoading(false);
+      });
+  }, []);
+
+  const handleEditClick = (user) => {
+    setEditUserId(user.korisnikID);
+    setEditedUser({ ...user });
   }
 
-  handleEditClick = (user) => {
-    this.setState({ editUserId: user.korisnikID, editedUser: { ...user } });
-  }
-
-  handleInputChange = (e) => {
+  const handleInputChange = (e) => {
     const { name, value } = e.target;
-    this.setState((prevState) => ({
-      editedUser: {
-        ...prevState.editedUser,
-        [name]: value
-      }
+    setEditedUser((prevEditedUser) => ({
+      ...prevEditedUser,
+      [name]: value
     }));
   }
 
-  handleSaveClick = () => {
-    const { editedUser } = this.state;
+  const handleSaveClick = () => {
     const token = localStorage.getItem('token');
 
     fetch(Variables.API_URL + 'korisnici', {
@@ -54,15 +53,7 @@ export class Users extends Component {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`
       },
-      body: JSON.stringify({
-        korisnikID: editedUser.korisnikID,
-        korisnickoIme: editedUser.korisnickoIme,
-        uloga: editedUser.uloga,
-        email: editedUser.email,
-        broj: editedUser.broj,
-        datum_prijave: editedUser.datum_prijave,
-        adresa: editedUser.adresa
-      })
+      body: JSON.stringify(editedUser)
     })
       .then(response => {
         if (!response.ok) {
@@ -73,110 +64,128 @@ export class Users extends Component {
         return response.json();
       })
       .then(() => {
-        this.setState((prevState) => ({
-          users: prevState.users.map(user => user.korisnikID === editedUser.korisnikID ? editedUser : user),
-          editUserId: null,
-          editedUser: {}
-        }));
+        setUsers((prevUsers) => prevUsers.map(user => user.korisnikID === editedUser.korisnikID ? editedUser : user));
+        setEditUserId(null);
+        setEditedUser({});
       })
-      .catch(error => this.setState({ error }));
+      .catch(error => setError(error));
   }
 
-  render() {
-    const { users, loading, error, editUserId, editedUser } = this.state;
+  const handleDeleteClick = (userId) => {
+    const token = localStorage.getItem('token');
 
-    if (loading) {
-      return <div>Loading...</div>;
-    }
+    fetch(`${Variables.API_URL}korisnici/${userId}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      }
+    })
+      .then(response => {
+        if (!response.ok) {
+          return response.json().then(errorData => {
+            throw new Error(errorData.message || 'Failed to delete user');
+          });
+        }
+        setUsers((prevUsers) => prevUsers.filter(user => user.korisnikID !== userId));
+      })
+      .catch(error => setError(error));
+  }
 
-    if (error) {
-      return <div>Error: {error.message}</div>;
-    }
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
-    return (
-      <Container>
-        <h1 className="my-4">Users</h1>
-        <Table striped bordered hover>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Username</th>
-              <th>Role</th>
-              <th>Email</th>
-              <th>Phone Number</th>
-              <th>Registration Date</th>
-              <th>Address</th>
-              <th>Actions</th>
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
+
+  return (
+    <Container>
+      <h1 className="my-4">Users</h1>
+      <Table striped bordered hover>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Role</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+            <th>Registration Date</th>
+            <th>Address</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {users.map(user => (
+            <tr key={user.korisnikID}>
+              <td>{user.korisnikID}</td>
+              <td>{user.korisnickoIme}</td>
+              <td>
+                {editUserId === user.korisnikID ? (
+                  <Form.Control
+                    type="text"
+                    name="uloga"
+                    value={editedUser.uloga}
+                    onChange={handleInputChange}
+                  />
+                ) : (
+                  user.uloga
+                )}
+              </td>
+              <td>
+                {editUserId === user.korisnikID ? (
+                  <Form.Control
+                    type="email"
+                    name="email"
+                    value={editedUser.email}
+                    onChange={handleInputChange}
+                  />
+                ) : (
+                  user.email
+                )}
+              </td>
+              <td>
+                {editUserId === user.korisnikID ? (
+                  <Form.Control
+                    type="text"
+                    name="broj"
+                    value={editedUser.broj}
+                    onChange={handleInputChange}
+                  />
+                ) : (
+                  user.broj
+                )}
+              </td>
+              <td>{new Date(user.datum_prijave).toLocaleDateString()}</td>
+              <td>
+                {editUserId === user.korisnikID ? (
+                  <Form.Control
+                    type="text"
+                    name="adresa"
+                    value={editedUser.adresa}
+                    onChange={handleInputChange}
+                  />
+                ) : (
+                  user.adresa
+                )}
+              </td>
+              <td>
+                {editUserId === user.korisnikID ? (
+                  <Button variant="success" onClick={handleSaveClick}>Save</Button>
+                ) : (
+                  <>
+                    <Button variant="primary" onClick={() => handleEditClick(user)} className="me-2">Edit</Button>
+                    <Button variant="danger" onClick={() => handleDeleteClick(user.korisnikID)} className="ms-2">Delete</Button>
+                  </>
+                )}
+              </td>
             </tr>
-          </thead>
-          <tbody>
-            {users.map(user => (
-              <tr key={user.korisnikID}>
-                <td>{user.korisnikID}</td>
-                <td>{user.korisnickoIme}</td>
-                <td>
-                  {editUserId === user.korisnikID ? (
-                    <Form.Control
-                      type="text"
-                      name="uloga"
-                      value={editedUser.uloga}
-                      onChange={this.handleInputChange}
-                    />
-                  ) : (
-                    user.uloga
-                  )}
-                </td>
-                <td>
-                  {editUserId === user.korisnikID ? (
-                    <Form.Control
-                      type="email"
-                      name="email"
-                      value={editedUser.email}
-                      onChange={this.handleInputChange}
-                    />
-                  ) : (
-                    user.email
-                  )}
-                </td>
-                <td>
-                  {editUserId === user.korisnikID ? (
-                    <Form.Control
-                      type="text"
-                      name="broj"
-                      value={editedUser.broj}
-                      onChange={this.handleInputChange}
-                    />
-                  ) : (
-                    user.broj
-                  )}
-                </td>
-                <td>{new Date(user.datum_prijave).toLocaleDateString()}</td>
-                <td>
-                  {editUserId === user.korisnikID ? (
-                    <Form.Control
-                      type="text"
-                      name="adresa"
-                      value={editedUser.adresa}
-                      onChange={this.handleInputChange}
-                    />
-                  ) : (
-                    user.adresa
-                  )}
-                </td>
-                <td>
-                  {editUserId === user.korisnikID ? (
-                    <Button variant="success" onClick={this.handleSaveClick}>Save</Button>
-                  ) : (
-                    <Button variant="primary" onClick={() => this.handleEditClick(user)}>Edit</Button>
-                  )}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </Table>
-      </Container>
-    );
-  }
+          ))}
+        </tbody>
+      </Table>
+    </Container>
+  );
 }
 
 export default Users;

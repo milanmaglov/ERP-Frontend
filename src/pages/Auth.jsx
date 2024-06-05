@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import React, { Component } from 'react';
 import '../style/login.css';
 import { Variables } from '../../Variables';
@@ -40,11 +41,11 @@ export class Login extends Component {
     if (response.ok) {
       localStorage.setItem('token', data.token);
       const userRole = getUserRole(data.token);
-      console.log('User role:', userRole); // Debugging line
+      console.log('User role:', userRole); 
 
       if (userRole === 'admin') {
         this.setState({ redirectToAdmin: true });
-        console.log('Redirecting to admin page'); // Debugging line
+        console.log('Redirecting to admin page'); 
       } else {
         this.setState({ redirectToHome: true });
       }

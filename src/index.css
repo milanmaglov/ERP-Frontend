@@ -1,4 +1,4 @@
-/* Resetting default browser styles */
+
 html, body, h1, h2, h3, p, ul, ol, li {
   margin: 0;
   padding: 0;
@@ -13,7 +13,7 @@ body {
   overflow: scroll;
 }
 
-/* Global styles */
+
 .container {
   max-width:100%;
   margin: 0 auto;
@@ -33,7 +33,7 @@ body {
   text-align: center;
 }
 
-/* Links */
+
 a {
   color: #007bff;
   text-decoration: none;
@@ -43,7 +43,7 @@ a:hover {
   text-decoration: underline;
 }
 
-/* Buttons */
+
 .button {
   display: inline-block;
   padding: 10px 20px;
