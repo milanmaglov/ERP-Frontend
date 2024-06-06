@@ -1,3 +1,13 @@
+.instrumentContainer{
+    background-image: url('/public/images/background2.jpg');
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat;
+}
+.header{
+    background-color: #555;
+}
+
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
@@ -16,9 +26,9 @@ h1 {
 }
 
 .instruments-list {
-    max-width: 800px;
+    max-width: 1000px;
     margin: 20px auto;
-    background: rgba(255, 255, 255, 0.9); 
+    background: rgba(255, 255, 255, 0.85); 
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);

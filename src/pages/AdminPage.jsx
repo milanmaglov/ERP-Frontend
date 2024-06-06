@@ -4,8 +4,9 @@ import { Container, Button, Row, Col } from 'react-bootstrap';
 import Proizvodjac from '../assets/proizvodjac'; 
 import '../style/admin.css'; 
 import Vrsta from '../assets/vrsta';
-import Skladiste from '../assets/skladiste'
-import Stanje from '../assets/stanje'
+import Skladiste from '../assets/skladiste';
+import Stanje from '../assets/stanje';
+import InstrumentiAdmin from '../assets/instrumentAdmin';
 
 const AdminPage = () => {
   const [selectedAsset, setSelectedAsset] = useState(null);
@@ -24,6 +25,8 @@ const AdminPage = () => {
         return <Skladiste />;
       case 'Stanje':
         return <Stanje />;
+      case 'InstrumentiAdmin':
+        return<InstrumentiAdmin />;
       default:
         return <div>Select an asset to view</div>;
     }
@@ -45,6 +48,9 @@ const AdminPage = () => {
         </Col>
         <Col>
           <Button onClick={() => handleButtonClick('Stanje')} className ="customButton">Stanje</Button>
+        </Col>
+        <Col>
+          <Button onClick={() => handleButtonClick('InstrumentiAdmin')} className ="customButton">Instrument</Button>
         </Col>
         {/* Add more buttons here for other assets */}
       </Row>

@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import React, { useEffect, useState, Component } from 'react';
 import '../style/Products.css';
 import { Variables } from '../../Variables';
@@ -54,6 +55,7 @@ const InstrumentsList = () => {
     }
 
     return (
+    <div className="instrumentContainer">
         <div className="instruments-list">
             <h1>Musical Instruments</h1>
             <div className="controls">
@@ -104,14 +106,15 @@ const InstrumentsList = () => {
                 ))}
             </div>
         </div>
+    </div>
     );
 };
 
 export class Products extends Component {
     render() {
         return (
-            <div>
-                <h1>Hello</h1>
+            <div className = "header">
+                <h1>Music World Store</h1>
                 <InstrumentsList />
             </div>
         );
