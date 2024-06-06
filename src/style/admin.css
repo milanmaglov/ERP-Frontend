@@ -1,9 +1,7 @@
-/* admin.css */
 
 .admin-container {
   margin-top: 20px;
 }
-
 
 .my-4 {
   margin-top: 20px;
@@ -51,4 +49,5 @@ table tbody tr:nth-child(even) {
 
 form .form-group {
   margin-bottom: 20px;
+
 }
