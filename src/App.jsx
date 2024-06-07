@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-import { NavBar } from './assets/navbar';
+import NavBar from './assets/navbar';
 import { Home } from './pages/Home';
 import { About } from './pages/About';
 import { Products } from './pages/Products';
@@ -8,8 +8,9 @@ import { Login } from './pages/Auth';
 import  AdminPage  from './pages/AdminPage';
 import { ProtectedRoute } from './assets/protectedroute';
 import { Register } from './pages/Register';
-import { AdminNavBar } from './assets/adminnavbar';
+import  AdminNavBar  from './assets/adminnavbar';
 import  Users  from './pages/Korisnici';
+import ProductDetails from '../src/assets/productdetail';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function AppContent() {
@@ -26,6 +27,7 @@ function AppContent() {
           <Route path="/products" element={<Products />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/product-details" element={<ProductDetails />} />
           <Route element={<ProtectedRoute roles={['admin']} />}>
             <Route path="/admin" element={<AdminPage />} />
             <Route path="/admin/dashboard" element={<AdminPage />} />

@@ -25,12 +25,6 @@ export class Home extends Component {
             <p>Explore our curated selection of the best available instruments</p>
           </div>
         </section>
-        
-        {isAuthenticated && (
-          <section className="mrki-section">
-            <button className="big-button">mrki</button>
-          </section>
-        )}
 
         <section className="about-section">
           <h2>About Us</h2>
