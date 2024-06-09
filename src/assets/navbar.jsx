@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
+import { Cart } from 'react-bootstrap-icons'; // Import the Cart icon
 import '../style/navbar.css';
 
 const NavBar = () => {
@@ -31,7 +32,7 @@ const NavBar = () => {
             <Nav.Link as={Link} to="/About">About</Nav.Link>
             <Nav.Link as={Link} to="/Products">Products</Nav.Link>
             <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-              <NavDropdown.Item as={Link} to="#action/3.1">Action</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/cartTest">Action</NavDropdown.Item>
               <NavDropdown.Item as={Link} to="#action/3.2">Another action</NavDropdown.Item>
               <NavDropdown.Item as={Link} to="#action/3.3">Something</NavDropdown.Item>
               <NavDropdown.Divider />
@@ -39,6 +40,9 @@ const NavBar = () => {
             </NavDropdown>
           </Nav>
           <Nav>
+            <Nav.Link as={Link} to="/cart" className="nav-link-icon">
+              <Cart /> Cart
+            </Nav.Link>
             {isLoggedIn ? (
               <Nav.Link onClick={handleLogout}>Logout</Nav.Link>
             ) : (

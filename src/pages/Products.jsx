@@ -1,8 +1,8 @@
-// eslint-disable-next-line no-unused-vars
 import React, { useEffect, useState, Component } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../style/Products.css';
 import { Variables } from '../../Variables';
+import { getUserRole, getToken } from '../auth/auth';
 
 const InstrumentsList = () => {
     const [instruments, setInstruments] = useState([]);
@@ -39,35 +39,39 @@ const InstrumentsList = () => {
             }
         };
 
-        fetchInstruments();
-        
-        // Check if the user is logged in
-        const token = localStorage.getItem('token');
-        setIsLoggedIn(!!token);
-
-        // Fetch the user's cart if logged in
-        if (token) {
-            fetchUserCart();
-        }
-    }, []);
-
-    const fetchUserCart = async () => {
-        try {
-            const response = await fetch(Variables.API_URL + 'korpe', {
-                method: 'GET',
-                headers: {
-                    'Authorization': `Bearer ${localStorage.getItem('token')}`
+        const fetchUserCart = async (userId) => {
+            try {
+                const response = await fetch(`${Variables.API_URL}korpe/korisnik/?korisnikID=${userId}`, {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${localStorage.getItem('token')}`,
+                        'Content-Type': 'application/json'
+                    }
+                });
+                if (!response.ok) {
+                    const errorResponse = await response.json();
+                    console.error('Error response:', errorResponse);
+                    throw new Error('Network response was not ok');
                 }
-            });
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
+                const data = await response.json();
+                setKorpaID(data.korpaID);
+                console.log('Fetched KorpaID:', data.korpaID); // Debug line to log the fetched KorpaID
+            } catch (error) {
+                console.error('Failed to fetch user cart:', error);
             }
-            const data = await response.json();
-            setKorpaID(data.KorpaID);
-        } catch (error) {
-            console.error('Failed to fetch user cart:', error);
+        };
+
+        const token = getToken();
+        if (token) {
+            const roleData = getUserRole(token);
+            if (roleData && roleData.userId) {
+                setIsLoggedIn(true);
+                fetchUserCart(roleData.userId);
+            }
         }
-    };
+
+        fetchInstruments();
+    }, []);
 
     const handleAddToCart = (instrument) => {
         const normalizedProizvodjac = instrument.naziv_proiz.toLowerCase();
@@ -116,7 +120,7 @@ const InstrumentsList = () => {
                             const normalizedProizvodjac = instrument.naziv_proiz.toLowerCase();
                             const imageUrl = imageMapping[normalizedProizvodjac] || 'default.jpg';
                             return (
-                                <li key={instrument.InstrumentID}>
+                                <li key={instrument.instrumentID}>
                                     <img 
                                         src={`/images/${imageUrl}`} 
                                         alt={instrument.naziv} 

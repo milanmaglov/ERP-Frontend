@@ -1,3 +1,16 @@
+.product-details-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Ensure the space between the elements */
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.side-gif {
+    width: 300px;
+    height: 300px;
+}
+
 .product-details {
     display: flex;
     flex-direction: column;
@@ -7,9 +20,10 @@
     text-align: center;
     padding: 20px;
     box-sizing: border-box;
+    flex-grow: 1; /* Allow the product details to take up available space */
 }
 
-.product-details img {
+.product-details img.instrument-image {
     max-width: 100%;
     height: auto;
     margin-bottom: 20px;

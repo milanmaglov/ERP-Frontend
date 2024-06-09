@@ -11,6 +11,8 @@ import { Register } from './pages/Register';
 import  AdminNavBar  from './assets/adminnavbar';
 import  Users  from './pages/Korisnici';
 import ProductDetails from '../src/assets/productdetail';
+import Cart from './pages/Cart';
+import Checkout from '../src/Checkout'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function AppContent() {
@@ -28,6 +30,8 @@ function AppContent() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/product-details" element={<ProductDetails />} />
+          <Route path= "/cart" element = {<Cart />} />
+          <Route path="/checkout" element={<Checkout />} />
           <Route element={<ProtectedRoute roles={['admin']} />}>
             <Route path="/admin" element={<AdminPage />} />
             <Route path="/admin/dashboard" element={<AdminPage />} />
