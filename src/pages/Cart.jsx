@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { getToken, getUserRole } from '../auth/auth'; // Update the path as needed
 import { Variables } from '../../Variables'; // Update the path to where Variables is located
 import '../style/cart.css'; // Import the CSS file
-import { useNavigate } from 'react-router-dom';
 
 const Cart = () => {
   const [cart, setCart] = useState(null);
@@ -93,7 +93,7 @@ const Cart = () => {
   };
 
   const handleCheckout = () => {
-    navigate('/checkout');
+    navigate('/checkout', { state: { totalAmount: totalPrice } });
   };
 
   return (
@@ -138,8 +138,8 @@ const Cart = () => {
                 <h3>Total Price: {totalPrice}</h3>
               </div>
               <button className="checkout-button" onClick={handleCheckout}>
-                  Proceed to Checkout
-                </button>
+                Proceed to Checkout
+              </button>
             </div>
           )}
         </div>

@@ -5,14 +5,14 @@ import { Home } from './pages/Home';
 import { About } from './pages/About';
 import { Products } from './pages/Products';
 import { Login } from './pages/Auth';
-import  AdminPage  from './pages/AdminPage';
+import AdminPage from './pages/AdminPage';
 import { ProtectedRoute } from './assets/protectedroute';
 import { Register } from './pages/Register';
-import  AdminNavBar  from './assets/adminnavbar';
-import  Users  from './pages/Korisnici';
+import AdminNavBar from './assets/adminnavbar';
+import Users from './pages/Korisnici';
 import ProductDetails from '../src/assets/productdetail';
 import Cart from './pages/Cart';
-import Checkout from '../src/Checkout'
+import Checkout from '../src/Checkout'; // Ensure the path is correct
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function AppContent() {
@@ -30,12 +30,12 @@ function AppContent() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/product-details" element={<ProductDetails />} />
-          <Route path= "/cart" element = {<Cart />} />
+          <Route path="/cart" element={<Cart />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route element={<ProtectedRoute roles={['admin']} />}>
             <Route path="/admin" element={<AdminPage />} />
             <Route path="/admin/dashboard" element={<AdminPage />} />
-            <Route path="/admin/users" element={<Users/> }/>
+            <Route path="/admin/users" element={<Users />} />
             <Route path="/admin/settings" element={<div>Settings</div>} />
           </Route>
         </Routes>
