@@ -18,7 +18,8 @@
     "react-bootstrap": "^2.10.2",
     "react-bootstrap-icons": "^1.11.4",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.23.1"
+    "react-router-dom": "^6.23.1",
+    "stripe": "^15.10.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",
